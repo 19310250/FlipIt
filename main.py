@@ -34,10 +34,10 @@ class FlipITPage(tk.Tk):
 
         btnAddListing =  ttk.Button(self, text = "Add listing", command = lambda : self.showFrame(addListing))
         btnAddListing.pack(anchor="e")
-        #TODO finish header
+        #TODO finish header by adding search bar and other buttons
         
         self.frames = {}
-        for F in (home, addListing):
+        for F in (home, addListing): # Add all pages to a list which can then be switched between
             frame = F(mainFrame, self)
             self.frames[F] = frame
             frame.place(relx=0, rely=0.05, relwidth=1, relheight=0.95)
@@ -50,7 +50,7 @@ class FlipITPage(tk.Tk):
         frame.tkraise()
 
 '''
-Each page is stored in it's own class. To create a new page copy the first 3 lines of one of these classes and rename it, then add the new name to the for loop in the main class for it to add it to the list of pages.
+Each page is stored in it's own class. To create a new page copy the first 3 lines of one of these classes and rename it, then add the new name to the for loop in the main class to add it to the list of pages.
 Then add items to it like you usually would in tkinter.
 '''
 class home (tk.Frame):
@@ -80,7 +80,7 @@ class login (tk.Frame):
         btnLogin = ttk.Button(self.top, text="Login", command=self.on_login)
         btnLogin.pack()
 
-        # Locks the background window untill the user has logged in
+        # Locks the background window until the user has logged in
         self.top.transient(parent)
         self.top.grab_set()
         parent.wait_window(self.top)
