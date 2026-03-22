@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import Toplevel, ttk
 
 class colours:
     bg = "#1A1F16"
@@ -29,17 +29,21 @@ class FlipITPage(tk.Tk):
         self.header = tk.Frame(self, bg=colours.bg)
         self.header.place (relx= 0, rely=0, relwidth=1, relheight=0.05)
 
-        label1 = ttk.Label(self.header, text="FlipIt",background=colours.bg, foreground=colours.col4, font=("Arial", 25))
-        label1.place(relx=0, rely=0)
-        #TODO finish header        
+        lblLogo = ttk.Label(self.header, text="FlipIt",background=colours.bg, foreground=colours.col4, font=("Arial", 25))
+        lblLogo.pack(side="left")
+
+        btnAddListing =  ttk.Button(self, text = "Add listing", command = lambda : self.showFrame(addListing))
+        btnAddListing.pack(anchor="e")
+        #TODO finish header
         
         self.frames = {}
-        for F in (home, addListing, login):
+        for F in (home, addListing):
             frame = F(mainFrame, self)
             self.frames[F] = frame
             frame.place(relx=0, rely=0.05, relwidth=1, relheight=0.95)
 
         self.showFrame(home)
+        login(self,self)
 
     def showFrame(self, cont):
         frame = self.frames[cont]
@@ -54,7 +58,7 @@ class home (tk.Frame):
         tk.Frame.__init__(self, parent)
         self.config(bg=colours.bg)
         
-        # Placeholder, can be replaced
+        # Placeholder example, can and should be replaced
         label = tk.Label(self, text= "home")
         label.pack(fill=tk.BOTH)
         button1 = ttk.Button(self, text = "add listing", command = lambda : controller.showFrame(addListing))
@@ -66,12 +70,27 @@ class addListing (tk.Frame):
         label = tk.Label(self, text= "listing")
         label.pack(fill=tk.BOTH)
 
-
+# based on https://runebook.dev/en/docs/python/library/dialog, slightly jank but seems to work
 class login (tk.Frame):
     def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
+        self.top = tk.Toplevel(parent)
+        self.top.title("Login")
+        
+        #TODO Add login boxes and buttons that call the login functions
+        btnLogin = ttk.Button(self.top, text="Login", command=self.on_login)
+        btnLogin.pack()
 
+        # Locks the background window untill the user has logged in
+        self.top.transient(parent)
+        self.top.grab_set()
+        parent.wait_window(self.top)
+
+    def on_login(self):
+        #todo return data
+        self.top.destroy()
+    
         
 if __name__ == "__main__":
     root = FlipITPage()
+    
     root.mainloop()
