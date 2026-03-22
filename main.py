@@ -1,8 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
 
-from home import home
-from add_listing import add_listing
 
 class FlipITPage(tk.Tk):
     def __init__(self):
@@ -27,7 +25,22 @@ class FlipITPage(tk.Tk):
     def showFrame(self, cont):
         frame = self.frames[cont]
         frame.tkraise()
-        
+
+
+class home (tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        self.config(bg="#1A1F16")
+        label = tk.Label(self, text= "home")
+        label.pack(fill=tk.BOTH)
+        button1 = ttk.Button(self, text = "add listing", command = lambda : controller.showFrame(add_listing))
+        button1.pack()
+
+class add_listing (tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
+        label = tk.Label(self, text= "listing")
+        label.pack(fill=tk.BOTH)
     
 if __name__ == "__main__":
     root = FlipITPage()
