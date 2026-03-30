@@ -42,7 +42,7 @@ class addListing (tk.Frame):
 
         lblDescription = tk.Label(self, text="Description:", background=colours.bg, foreground=colours.text)
         lblDescription.pack(anchor="nw", padx=20)
-        txtDescription = tk.Text(self, height = 20, background=colours.bg, foreground=colours.text)
+        txtDescription = tk.Text(self, height = 20, background=colours.col2, foreground=colours.text)
         addPlaceholder(txtDescription, "Write about what you are selling, what is included in the box, and any extra information...")
         txtDescription.pack(fill="x", padx=20)
         
@@ -52,6 +52,7 @@ class addListing (tk.Frame):
         cbConditions = ttk.Combobox(self, background=colours.bg, values=conditions, foreground= colours.text, state="readonly")
         cbConditions.set("Select a condition")
         cbConditions.pack(fill="x", padx=20)
+        
         
 
         
