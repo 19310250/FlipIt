@@ -1,8 +1,8 @@
 import tkinter as tk
-from tkinter import Toplevel, ttk
+from tkinter import ttk
 
 from colours import colours
-from addListing import addListing
+from pages.addListing import addListing
 
 class home (tk.Frame):
     def __init__(self, parent, controller):

@@ -22,8 +22,12 @@ class addListing (tk.Frame):
             
         tk.Frame.__init__(self, parent)
         self.config(bg=colours.bg)
-        lblName = tk.Label(self, text= "Item Name:", background=colours.bg, foreground=colours.text)
+        lblName = tk.Label(self, text= "Item name:", background=colours.bg, foreground=colours.text)
         lblName.pack(anchor="nw")
         txtName = tk.Text(self, height=1, wrap="none", background=colours.col2, foreground=colours.text)
         addPlaceholder(txtName, "What should people search for to find this item....")
         txtName.pack(anchor="nw")
+
+        lblPhoto = tk.Label(self, text= "Add photo:", background=colours.bg, foreground=colours.text)
+        lblPhoto.pack(anchor="nw")
+        

@@ -1,10 +1,9 @@
 import tkinter as tk
-from tkinter import Toplevel, ttk
+from tkinter import ttk
 
 from colours import colours
-from addListing import addListing
-from home import home
-
+from pages.home import home
+from pages.addListing import addListing
 '''
 This is the main class, it prepairs the window and the ability to switch between different frames. Each page will be put in a different frame.
 '''
@@ -46,7 +45,7 @@ class FlipITPage(tk.Tk):
         self.title("FlipIt.co.uk/" + frame.__class__.__name__)
 
 '''
-Each page is stored in it's own class file. To create a new page copy the first 3 lines of one of the other classes and rename it, then add the new name to the for loop in the main class to add it to the list of pages.
+Each page is stored in it's own class file. To create a new page copy the first 3 lines of one of the classes and rename it, then add the new name to the for loop in the main class to add it to the list of pages, and import it at the top.
 Then add items to it like you usually would in tkinter.
 '''
 
