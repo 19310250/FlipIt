@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-import Colours
+from Colours import Colours
 
 ### use this new top frame to handle logout as done with the other classes
 class Logout(tk.Frame):

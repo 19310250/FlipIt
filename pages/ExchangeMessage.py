@@ -1,5 +1,6 @@
 import tkinter as tk
-import Colours
+from tkinter import ttk
+from Colours import Colours
 
 ### use this new top frame to handle ExchangeMessage as done with the other classes
 class ExchangeMessage(tk.Frame):

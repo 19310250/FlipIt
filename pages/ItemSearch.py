@@ -1,5 +1,6 @@
 import tkinter as tk
-import Colours
+from tkinter import ttk
+from Colours import Colours
 
 class ItemSearch(tk.Frame):
     def __init__(self, parent, controller):

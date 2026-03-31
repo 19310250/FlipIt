@@ -1,6 +1,7 @@
 from tkinter import ttk
 import tkinter as tk
-
+from Colours import Colours
+ 
 # based on https://runebook.dev/en/docs/python/library/dialog, slightly jank but seems to work
 class Login (tk.Frame):
     def __init__(self, parent, controller):
