@@ -7,6 +7,7 @@ from pages.AddListing import AddListing
 from pages.ItemSearch import ItemSearch
 from pages.ExchangeMessage import ExchangeMessage
 from pages.RateSellers import RateSellers
+from pages.Login import Login
 from pages.Logout import Logout
 
 '''
@@ -65,10 +66,6 @@ class FlipITPage(tk.Tk):
         # Attach menu to button
         menubutton.config(menu=menu)
         
-        # btnAddListing =  ttk.Button(self, text = "Add listing", command = lambda : self.showFrame(AddListing))
-        # btnAddListing.pack(anchor="e")
-        
-        
         self.frames = {}
         for F in (MainPage, AddListing): # Add all pages to a list which can then be switched between
             frame = F(mainFrame, self)
@@ -76,7 +73,7 @@ class FlipITPage(tk.Tk):
             frame.place(relx=0, rely=0.05, relwidth=1, relheight=0.95)
 
         self.showFrame(MainPage)
-        login(self,self)
+        Login(self,self)
 
     def showFrame(self, cont):
         frame = self.frames[cont]
@@ -87,26 +84,6 @@ class FlipITPage(tk.Tk):
 Each page is stored in it's own class file. To create a new page copy the first 3 lines of one of the classes and rename it, then add the new name to the for loop in the main class to add it to the list of pages, and import it at the top.
 Then add items to it like you usually would in tkinter.
 '''
-
-# based on https://runebook.dev/en/docs/python/library/dialog, slightly jank but seems to work
-class login (tk.Frame):
-    def __init__(self, parent, controller):
-        self.top = tk.Toplevel(parent)
-        self.top.title("Login")
-        
-        #TODO Add login boxes and buttons that call the login functions
-        btnLogin = ttk.Button(self.top, text="Login", command=self.on_login)
-        btnLogin.pack()
-
-        # Locks the background window until the user has logged in
-        self.top.transient(parent)
-        self.top.grab_set()
-        parent.wait_window(self.top)
-
-    def on_login(self):
-        #todo return data
-        self.top.destroy()
-    
         
 if __name__ == "__main__":
     root = FlipITPage()
