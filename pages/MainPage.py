@@ -1,72 +1,19 @@
 import tkinter as tk
 from PIL import Image, ImageTk
-import AddListing, ItemSearch, ExchangeMessage, RateSellers, Logout
+import pages.AddListing, pages.ItemSearch, pages.ExchangeMessage, pages.RateSellers, pages.Logout
 
-class Colours:
-    bg = "#1A1F16"
-    col1 = "#1E3F20"
-    col2 = "#345830"
-    col3 = "#4A7856"
-    col4 = "#94ECBE"
-    text = "#C9D0C6"
+from pages.AddListing import AddListing
+from pages.ItemSearch import ItemSearch
+from pages.ExchangeMessage import ExchangeMessage
+from pages.RateSellers import RateSellers
+from pages.Logout import Logout
 
+from Colours import Colours
 
-class MainPage(tk.Toplevel):
-    def __init__(self):
-        super().__init__()
-        self.title("Main Page")
-        self.geometry("950x650")
+class MainPage(tk.Frame):
+    def __init__(self, parent, controller):
+        tk.Frame.__init__(self, parent)
         self.config(bg=Colours.bg)
-        #self.resizable(width=False, height=False)
-
-
-        # NAVBAR
-        nav_frame = tk.Frame(self, bg=Colours.col1)
-        nav_frame.pack(fill="x")
-
-        tk.Label(
-            nav_frame,
-            text="FlipIt",
-            font=("Arial", 22, "bold"),
-            bg=Colours.col1,
-            fg=Colours.text
-        ).pack(side="left", padx=15, pady=10)
-
-        btn_frame = tk.Frame(nav_frame, bg=Colours.col1)
-        btn_frame.pack(side="right", padx=10)
-
-        for text in ["Home", "Orders", "Returns", "Account"]:
-            tk.Button(
-                btn_frame,
-                text=text,
-                bg=Colours.col2,
-                fg=Colours.text
-            ).pack(side="left", padx=8)
-
-
-        # MENU BUTTON
-        menubutton = tk.Menubutton(
-            btn_frame,
-            text="Menu",
-            bg=Colours.col2,
-            fg=Colours.text,
-            relief="raised"
-        )
-        menubutton.pack(side="left", padx=8)
-
-        menu = tk.Menu(menubutton, tearoff=0)
-
-        # Add menu items
-        menu.add_command(label="Add Listing", command= lambda : AddListing.AddListing())
-        menu.add_command(label="Search Item", command= lambda : ItemSearch.ItemSearch())
-        menu.add_command(label="Message User", command= lambda : ExchangeMessage.ExchangeMessage())
-        menu.add_command(label="Rate Sellers", command= lambda : RateSellers.RateSellers())
-        menu.add_separator()
-        menu.add_command(label="Logout", command= lambda : Logout)
-
-        # Attach menu to button
-        menubutton.config(menu=menu)
-
 
         # SCROLLABLE AREA
         container = tk.Frame(self, bg=Colours.bg)
