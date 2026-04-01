@@ -1,12 +1,5 @@
 import tkinter as tk
 from PIL import Image, ImageTk
-import pages.AddListing, pages.ItemSearch, pages.ExchangeMessage, pages.RateSellers, pages.Logout
-
-from pages.AddListing import AddListing
-from pages.ItemSearch import ItemSearch
-from pages.ExchangeMessage import ExchangeMessage
-from pages.RateSellers import RateSellers
-from pages.Logout import Logout
 
 from Colours import Colours
 

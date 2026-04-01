@@ -1,11 +1,10 @@
 from tkinter import ttk
 import tkinter as tk
 from Colours import Colours
-import pages.MainPage
+from pages import MainPage
 
 class Login (tk.Frame):
     def __init__(self, parent, controller):
-
         tk.Frame.__init__(self, parent)
         self.controller = controller
         self.config(bg=Colours.bg)
@@ -13,5 +12,5 @@ class Login (tk.Frame):
         btnLogin.pack()
         
     def on_login(self):
-        self.controller.user = "username";
-        self.controller.showFrame(pages.MainPage.MainPage)
+        self.controller.user = "username"; # Sets the variable user in the main program for use in other pages
+        self.controller.showFrame(MainPage.MainPage)
