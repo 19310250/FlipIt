@@ -65,15 +65,15 @@ class FlipITPage(tk.Tk):
 
         # Attach menu to button
         menubutton.config(menu=menu)
-        
+
+        # Add all pages to a list which can then be switched between
         self.frames = {}
-        for F in (MainPage, AddListing): # Add all pages to a list which can then be switched between
+        for F in (MainPage, AddListing, Login): 
             frame = F(mainFrame, self)
             self.frames[F] = frame
             frame.place(relx=0, rely=0.05, relwidth=1, relheight=0.95)
 
-        self.showFrame(MainPage)
-        Login(self,self)
+        self.showFrame(Login)
 
     def showFrame(self, cont):
         frame = self.frames[cont]
