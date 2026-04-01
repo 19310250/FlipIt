@@ -2,7 +2,7 @@ from tkinter import ttk
 import tkinter as tk
 
 from Colours import Colours
-from pages import MainPage, AddListing, Login, Logout, ItemSearch, ExchangeMessage, RateSellers
+from pages import MainPage, AddListing, Login, Logout, ItemSearch, ExchangeMessage, Reviews
 from Header import Header
 
 '''
@@ -21,8 +21,8 @@ class FlipITPage(tk.Tk):
         mainFrame.place(relx=0, rely=0, relwidth=1, relheight=1)
 
         # Header
-        header = Header(self,self)
-        header.place (relx= 0, rely=0, relwidth=1, relheight=0.05)
+        self.header = Header(self, self)
+        self.header.place (relx= 0, rely=0, relwidth=1, relheight=0.05)
 
         # Add all pages to a list which can then be switched between
         self.frames = {}
@@ -30,7 +30,7 @@ class FlipITPage(tk.Tk):
                   AddListing.AddListing,
                   Login.Login,
                   ItemSearch.ItemSearch,
-                  RateSellers.RateSellers,
+                  Reviews.Reviews,
                   ExchangeMessage.ExchangeMessage): 
             frame = F(mainFrame, self)
             self.frames[F] = frame

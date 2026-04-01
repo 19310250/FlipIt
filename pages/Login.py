@@ -2,6 +2,7 @@ from tkinter import ttk
 import tkinter as tk
 from Colours import Colours
 from pages import MainPage
+from Header import Header
 
 class Login (tk.Frame):
     def __init__(self, parent, controller):
@@ -14,3 +15,4 @@ class Login (tk.Frame):
     def on_login(self):
         self.controller.user = "username"; # Sets the variable user in the main program for use in other pages
         self.controller.showFrame(MainPage.MainPage)
+        Header.ShowButtons(self.controller.header)
