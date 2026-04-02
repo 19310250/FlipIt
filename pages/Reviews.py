@@ -33,12 +33,13 @@ class Reviews(tk.Frame):
             entry.bind("<Leave>", boxFocusLost)
             
         tk.Frame.__init__(self, parent)
+        self.controller = controller
         self.config(bg=Colours.bg)
         sidebar = tk.Frame(self, background=Colours.col1)
         sidebar.place(relx=0, rely=0, relwidth=0.16, relheight=1)
 
         self.body = tk.Frame(self, background=Colours.bg)
-        self.body.place(relx=0.16, rely=0,relwidth=0.6, relheight=1)
+        self.body.place(relx=0.16, rely=0,relwidth=0.84, relheight=1)
 
         lblReviews = tk.Label(sidebar, text="Customer Reviews", anchor="center", background=Colours.col1, foreground=Colours.text)
         lblReviews.pack()
@@ -51,16 +52,20 @@ class Reviews(tk.Frame):
                tk.Label(frmStars, image=self.imgStarIcon, background=Colours.col1).grid(row=i, column=j)
             tk.Label(frmStars, text=f"{i*3}",background=Colours.col1, foreground=Colours.text).grid(row=i, column=5-i)
 
-        txtAddReview = tk.Text(self.body, background=Colours.col2, height=20)
-        addPlaceholder(txtAddReview, "Share your thoughts...")
-        txtAddReview.grid(row=0)
-        btnAddReview = tk.Button(self.body, text="Submit review",background=Colours.col3)
-        btnAddReview.grid(row=1)
+        self.txtAddReview = tk.Text(self.body, background=Colours.col2, height=20)
+        addPlaceholder(self.txtAddReview, "Share your thoughts...")
+        self.txtAddReview.grid(row=0, sticky='new', padx=20)
+        self.scale = tk.Scale(self.body, from_=5, to=1)
+        self.scale.grid(row=0, column=1, sticky='ns')
+        btnAddReview = tk.Button(self.body, text="Submit review",background=Colours.col3, command=self.addReview)
+        btnAddReview.grid(row=1, sticky='ew', padx=20, pady=20, columnspan=2)
         self.frmReviews = tk.Frame(self.body, background=Colours.bg)
-        self.frmReviews.grid(row=2)
+        self.frmReviews.grid(row=2,columnspan=2)
         self.loadReviews()
         
     def loadReviews(self):
+        for widget in self.frmReviews.winfo_children():
+            widget.destroy()
         for review in reviews:
             frmReview = tk.Frame(self.frmReviews, background=Colours.bg)
             frmReview.pack(anchor="nw")
@@ -70,7 +75,11 @@ class Reviews(tk.Frame):
             for i in range(0, review.rating):
                 tk.Label(frmNameStars, image=self.imgStarIcon, background=Colours.bg).pack(side="right")
 
-            tk.Label(frmReview,text=review.text, pady=10, background=Colours.bg, foreground=Colours.text, font=("Arial", 20)).pack(side="bottom")
+            tk.Label(frmReview,text=review.text, pady=10, background=Colours.bg, foreground=Colours.text, wraplength=1000, justify=tk.LEFT, font=("Arial", 20)).pack(side="bottom")
             
+    def addReview(self):
+        print("test")
+        reviews.append(review(self.controller.username, self.scale.get(), self.txtAddReview.get('1.0', 'end-1c')))
+        self.loadReviews()
             
             
