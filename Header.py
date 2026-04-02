@@ -7,12 +7,12 @@ class Header (tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        self.config(bg=Colours.bg)
-        lblLogo = ttk.Label(self, text="FlipIt",background=Colours.bg, foreground=Colours.col4, font=("Arial", 25))
+        self.config(bg=Colours.col2)
+        lblLogo = ttk.Label(self, text="FlipIt",background=Colours.col2, foreground=Colours.col4, font=("Arial", 25))
         lblLogo.pack(side="left")
 
     def ShowButtons(self):
-        btn_frame = tk.Frame(self, bg=Colours.col1)
+        btn_frame = tk.Frame(self, bg=Colours.col2)
         btn_frame.pack(side="right", padx=10)
 
         for text in ["Home", "Orders", "Returns", "Account"]:

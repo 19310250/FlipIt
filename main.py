@@ -13,7 +13,7 @@ class FlipITPage(tk.Tk):
         tk.Tk.__init__(self)
 
         # App layout
-        self.geometry("1600x1200")
+        self.geometry("1570x700")
         self.resizable(False, False)
         self.config(background=Colours.bg)
 

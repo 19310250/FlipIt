@@ -35,9 +35,6 @@ class MainPage(tk.Frame):
                       "exercise book", "exam kits pack", "van rysel helmet", "reading glass", "casio calculator", "jade suitcase",
                       "highbury backpack ", "sony WH-1000XM6", "american freezer", "cost road bed", "office cupboard",
                       "revision desk", "Nvidia rtx 4060", "bundle jeans", "lord of the rink", "nba basketball", "anko toaster" ,
-
-
-                      "printer 123D", "Hamlet by WS", "combined science", "carrera bike", "scince kits",
                       ]
 
         items_path = ["imgs/img/airfryer.gif", "imgs/img/chromebookflip.png", "imgs/img/hammarn.png",
@@ -62,7 +59,7 @@ class MainPage(tk.Frame):
             for i in range(30)
         ]
 
-        rows, cols = 5, 6
+        rows, cols = 3, 10
 
 
         # GRID CONFIG
