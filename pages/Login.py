@@ -13,6 +13,6 @@ class Login (tk.Frame):
         btnLogin.pack()
         
     def on_login(self):
-        self.controller.user = "username"; # Sets the variable user in the main program for use in other pages
+        self.controller.username = "username"; # Sets the variable user in the main program for use in other pages
         self.controller.showFrame(MainPage.MainPage)
         Header.ShowButtons(self.controller.header)
