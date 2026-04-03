@@ -11,26 +11,47 @@ class Header (tk.Frame):
         lblLogo = ttk.Label(self, text="FlipIt",background=Colours.col2, foreground=Colours.col4, font=("Arial", 25))
         lblLogo.pack(side="left")
 
+
+
     def ShowButtons(self):
         btn_frame = tk.Frame(self, bg=Colours.col2)
         btn_frame.pack(side="right", padx=10)
-    
-        tk.Button(
-            btn_frame,
-            text="Messages",
-            bg=Colours.col2,
-            fg=Colours.text,
-            command=lambda: self.controller.showFrame(messages.MessagesPage)
-    ).pack(side="left", padx=8)
 
-        for text in ["Home", "Orders", "Returns", "Account","Messages"]:
+        def open_home():
+            print("Home")
+
+        def open_orders():
+            print("Orders")
+
+        def open_returns():
+            print("Returns")
+
+        def open_account():
+            print("Account")
+
+        def open_messages():
+            self.controller.showFrame(messages.MessagesPage)
+
+         # action to each nav page
+        actions = {
+            "Home": open_home,
+            "Orders": open_orders,
+            "Returns": open_returns,
+            "Account": open_account,
+            "Messages": open_messages
+        }
+
+        # create buttons and add command
+        for text in actions:
             tk.Button(
                 btn_frame,
                 text=text,
                 bg=Colours.col2,
-                fg=Colours.text
+                fg=Colours.text,
+                command=actions[text]
             ).pack(side="left", padx=8)
-            
+
+
         # MENU BUTTON
         menubutton = tk.Menubutton(
             btn_frame,
