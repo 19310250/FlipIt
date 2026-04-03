@@ -2,7 +2,7 @@ from tkinter import ttk
 import tkinter as tk
 
 from Colours import Colours
-from pages import MainPage, AddListing, Login, Logout, ItemSearch, ExchangeMessage, Reviews
+from pages import MainPage, AddListing, Login, Logout, ItemSearch, ExchangeMessage, Reviews, messages
 class Header (tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -14,8 +14,16 @@ class Header (tk.Frame):
     def ShowButtons(self):
         btn_frame = tk.Frame(self, bg=Colours.col2)
         btn_frame.pack(side="right", padx=10)
+    
+        tk.Button(
+            btn_frame,
+            text="Messages",
+            bg=Colours.col2,
+            fg=Colours.text,
+            command=lambda: self.controller.showFrame(messages.MessagesPage)
+    ).pack(side="left", padx=8)
 
-        for text in ["Home", "Orders", "Returns", "Account"]:
+        for text in ["Home", "Orders", "Returns", "Account","Messages"]:
             tk.Button(
                 btn_frame,
                 text=text,
@@ -38,7 +46,7 @@ class Header (tk.Frame):
         # Add menu items
         menu.add_command(label="Add Listing", command= lambda : self.controller.showFrame(AddListing.AddListing))
         menu.add_command(label="Search Item", command= lambda : self.controller.showFrame(ItemSearch.ItemSearch))
-        menu.add_command(label="Message User", command= lambda : self.controller.showFrame(ExchangeMessage.ExchangeMessage))
+        menu.add_command(label="Message User", command= lambda : self.controller.showFrame(messages.MessagesPage))
         menu.add_command(label="Rate Sellers", command= lambda : self.controller.showFrame(Reviews.Reviews))
         menu.add_separator()
         menu.add_command(label="Logout", command= lambda : self.controller.showFrame(Logout.Logout))

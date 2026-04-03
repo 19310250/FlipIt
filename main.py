@@ -3,7 +3,7 @@ from tkinter import ttk
 import tkinter as tk
 
 from Colours import Colours
-from pages import MainPage, AddListing, Login, Logout, ItemSearch, ExchangeMessage, Reviews
+from pages import MainPage, AddListing, Login, Logout, ItemSearch, ExchangeMessage, Reviews, messages
 from Header import Header
 
 '''
@@ -32,7 +32,8 @@ class FlipITPage(tk.Tk):
                   Login.Login,
                   ItemSearch.ItemSearch,
                   Reviews.Reviews,
-                  ExchangeMessage.ExchangeMessage): 
+                  ExchangeMessage.ExchangeMessage,
+                  messages.MessagesPage): 
             frame = F(mainFrame, self)
             self.frames[F] = frame
             frame.place(relx=0, rely=0.05, relwidth=1, relheight=0.95)
