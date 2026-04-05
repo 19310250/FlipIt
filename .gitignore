@@ -216,3 +216,5 @@ __marimo__/
 auto-save-list
 tramp
 .\#*
+
+chat_history.json
