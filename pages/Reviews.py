@@ -38,8 +38,20 @@ class Reviews(tk.Frame):
         sidebar = tk.Frame(self, background=Colours.col1)
         sidebar.place(relx=0, rely=0, relwidth=0.16, relheight=1)
 
-        self.body = tk.Frame(self, background=Colours.bg)
-        self.body.place(relx=0.16, rely=0,relwidth=0.84, relheight=1)
+        canvas = tk.Canvas(self, bg=Colours.bg)
+
+        canvas.place(relx=0.16, rely=0,relwidth=0.84, relheight=1)
+        self.body = tk.Frame(canvas, background=Colours.bg)
+        canvas.bind(
+            "<Configure>",
+            lambda _: canvas.configure(scrollregion=canvas.bbox("all"))
+        )
+        canvas.create_window(0, 0, window=self.body)
+        scrollbar = tk.Scrollbar(self, command=canvas.yview)
+        scrollbar.place(relx=1, rely=0, relheight=1, anchor="ne")
+        canvas.configure(yscrollcommand=scrollbar.set)
+        
+        self.body.columnconfigure(0, weight=1)
 
         lblReviews = tk.Label(sidebar, text="Customer Reviews", anchor="center", background=Colours.col1, foreground=Colours.text)
         lblReviews.pack()
@@ -78,7 +90,6 @@ class Reviews(tk.Frame):
             tk.Label(frmReview,text=review.text, pady=10, background=Colours.bg, foreground=Colours.text, wraplength=1000, justify=tk.LEFT, font=("Arial", 20)).pack(side="bottom")
             
     def addReview(self):
-        print("test")
         reviews.append(review(self.controller.username, self.scale.get(), self.txtAddReview.get('1.0', 'end-1c')))
         self.loadReviews()
             
