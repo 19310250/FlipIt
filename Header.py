@@ -18,7 +18,7 @@ class Header (tk.Frame):
         btn_frame.pack(side="right", padx=10)
 
         def open_home():
-            print("Home")
+            self.controller.showFrame(MainPage.MainPage)
 
         def open_orders():
             print("Orders")
