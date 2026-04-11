@@ -11,14 +11,16 @@ class Header (tk.Frame):
         lblLogo = ttk.Label(self, text="FlipIt",background=Colours.col2, foreground=Colours.col4, font=("Arial", 25))
         lblLogo.pack(side="left")
 
-
-
+        #Search bar
+        self.search = tk.Entry(self, font = ("Arial", 12), width=30)
+        self.search.pack(side="left", padx=20)
+    
     def ShowButtons(self):
         btn_frame = tk.Frame(self, bg=Colours.col2)
         btn_frame.pack(side="right", padx=10)
 
         def open_home():
-            self.controller.showFrame(MainPage.MainPage)
+            print("Home")
 
         def open_orders():
             print("Orders")
@@ -31,6 +33,9 @@ class Header (tk.Frame):
 
         def open_messages():
             self.controller.showFrame(messages.MessagesPage)
+        
+        def open_items_search():
+            self.controller.showFrame(ItemSearch.ItemSearch)
 
          # action to each nav page
         actions = {
@@ -66,7 +71,6 @@ class Header (tk.Frame):
 
         # Add menu items
         menu.add_command(label="Add Listing", command= lambda : self.controller.showFrame(AddListing.AddListing))
-        menu.add_command(label="Search Item", command= lambda : self.controller.showFrame(ItemSearch.ItemSearch))
         menu.add_command(label="Message User", command= lambda : self.controller.showFrame(messages.MessagesPage))
         menu.add_command(label="Rate Sellers", command= lambda : self.controller.showFrame(Reviews.Reviews))
         menu.add_separator()
@@ -74,3 +78,7 @@ class Header (tk.Frame):
 
         # Attach menu to button
         menubutton.config(menu=menu)
+
+        
+        
+
