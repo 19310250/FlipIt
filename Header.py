@@ -10,14 +10,13 @@ class Header (tk.Frame):
         self.config(bg=Colours.col2)
         lblLogo = ttk.Label(self, text="FlipIt",background=Colours.col2, foreground=Colours.col4, font=("Arial", 25))
         lblLogo.pack(side="left")
-
-        #Search bar
-        self.search = tk.Entry(self, font = ("Arial", 12), width=30)
-        self.search.pack(side="left", padx=20)
     
     def ShowButtons(self):
         btn_frame = tk.Frame(self, bg=Colours.col2)
         btn_frame.pack(side="right", padx=10)
+        #Search bar
+        self.search = tk.Entry(self, font = ("Arial", 12), width=30)
+        self.search.pack(side="left", padx=20)
 
         def open_home():
             print("Home")
