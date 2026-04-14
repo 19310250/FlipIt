@@ -3,7 +3,7 @@ import tkinter as tk
 
 from Colours import Colours
 from pages import (MainPage, AddListing, Login, Logout, ItemSearch,
-ExchangeMessage, Reviews, messages, ReturnItem, FetchingOverviewInfo, ItemsVerification, DeleteAccount)
+ExchangeMessage, Reviews, messages, ReturnItem, FetchingOverviewInfo, ItemsVerification, DeleteAccount, SavedItems)
 
 
 class Header (tk.Frame):
@@ -26,6 +26,9 @@ class Header (tk.Frame):
 
         def open_orders():
             print("Orders")
+        
+        def open_saved_items():
+            self.controller.showFrame(SavedItems.SavedItems)
 
         def open_returns():
             print("Returns")
@@ -57,7 +60,8 @@ class Header (tk.Frame):
             "Orders": open_orders,
             "Returns": open_returns,
             "Account": open_account,
-            "Messages": open_messages
+            "Messages": open_messages,
+            "Saved Items": open_saved_items,
         }
 
         # create buttons and add command

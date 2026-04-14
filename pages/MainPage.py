@@ -124,10 +124,20 @@ class MainPage(tk.Frame):
                 font=("Arial", 8)
             ).pack()
 
-            # Button
+            # Buttons
+            button_frame = tk.Frame(inner, bg=Colours.col2)
+            button_frame.pack(pady=5)
+            #View button
             tk.Button(
-                inner,
+                button_frame,
                 text="View",
                 bg=Colours.col3,
                 fg=Colours.text
-            ).pack(pady=5)
+            ).pack(side="left", padx=5)
+            #Save button
+            tk.Button(
+                button_frame,
+                text="Save",
+                bg=Colours.col3,
+                fg=Colours.text
+            ).pack(side="right", padx=5)

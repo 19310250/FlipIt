@@ -4,7 +4,7 @@ import tkinter as tk
 
 from Colours import Colours
 from pages import (MainPage, AddListing, Login, Logout, ItemSearch, ExchangeMessage,
-Reviews, messages, ReturnItem, FetchingOverviewInfo, ItemsVerification, DeleteAccount)
+Reviews, messages, ReturnItem, FetchingOverviewInfo, ItemsVerification, DeleteAccount, SavedItems)
 
 from Header import Header
 
@@ -20,6 +20,9 @@ class FlipITPage(tk.Tk):
         self.resizable(False, False)
         self.config(background=Colours.bg)
 
+        #Items database
+        self.saved_items = []
+        
         mainFrame = tk.Frame(self)
         mainFrame.place(relx=0, rely=0, relwidth=1, relheight=1)
 
@@ -39,7 +42,8 @@ class FlipITPage(tk.Tk):
                   ReturnItem.ReturnItem,
                   FetchingOverviewInfo.FetchingOverviewInfo,
                   ItemsVerification.ItemsVerification,
-                  DeleteAccount.DeleteAccount):
+                  DeleteAccount.DeleteAccount,
+                  SavedItems.SavedItems):
 
             frame = F(mainFrame, self)
             self.frames[F] = frame
