@@ -20,7 +20,7 @@ class FlipITPage(tk.Tk):
         self.resizable(False, False)
         self.config(background=Colours.bg)
 
-        #Items database
+        #Saved Items database
         self.saved_items = []
         
         mainFrame = tk.Frame(self)
@@ -53,6 +53,8 @@ class FlipITPage(tk.Tk):
 
     def showFrame(self, cont):
         frame = self.frames[cont]
+        if cont == SavedItems.SavedItems:
+            frame.updateSavedItems()
         frame.tkraise()
         self.title("FlipIt.co.uk/" + frame.__class__.__name__)
 
