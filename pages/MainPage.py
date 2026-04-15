@@ -1,10 +1,12 @@
 import tkinter as tk
 from PIL import Image, ImageTk
+import tkinter.messagebox as messagebox
 
 from Colours import Colours
 
 class MainPage(tk.Frame):
     def __init__(self, parent, controller):
+        self.controller = controller
         tk.Frame.__init__(self, parent)
         self.config(bg=Colours.bg)
 
@@ -55,7 +57,11 @@ class MainPage(tk.Frame):
         # SAMPLE DATA
 
         self.items = [
-            {"name": f"{item_names[i]}", "price": f"£{(i+1)*10}"}
+            {
+                "name": f"{item_names[i]}", 
+                "price": f"£{(i+1)*10}",
+                "image": f"{items_path[i]}"
+            }
             for i in range(30)
         ]
 
@@ -134,10 +140,21 @@ class MainPage(tk.Frame):
                 bg=Colours.col3,
                 fg=Colours.text
             ).pack(side="left", padx=5)
+
             #Save button
             tk.Button(
                 button_frame,
                 text="Save",
                 bg=Colours.col3,
-                fg=Colours.text
+                fg=Colours.text,
+                command = lambda item=item: self.save_item(item)
             ).pack(side="right", padx=5)
+
+    #Function to save item to saved items list
+    def save_item(self, item):
+        if item not in self.controller.saved_items:
+            self.controller.saved_items.append(item)
+            messagebox.showinfo("Saved", f"{item['name']} added to saved items!")
+        else:
+            messagebox.showwarning("Not Saved", f"{item['name']} is already in saved items!")
+            
