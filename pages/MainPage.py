@@ -4,6 +4,8 @@ import tkinter.messagebox as messagebox
 
 from Colours import Colours
 
+from pages import ViewListing
+
 class MainPage(tk.Frame):
     def __init__(self, parent, controller):
         self.controller = controller
@@ -104,7 +106,8 @@ class MainPage(tk.Frame):
                 button_frame,
                 text="View",
                 bg=Colours.col3,
-                fg=Colours.text
+                fg=Colours.text,
+                command = lambda item=item: self.viewItem(item)
             ).pack(side="left", padx=5)
 
             #Save button
@@ -124,3 +127,7 @@ class MainPage(tk.Frame):
         else:
             messagebox.showwarning("Not Saved", f"{item['name']} is already in saved items!")
             
+    def viewItem(self, item):
+        frame = self.controller.frames[ViewListing.ViewListing]
+        ViewListing.ViewListing.view(frame, item)
+        self.controller.showFrame(ViewListing.ViewListing)
