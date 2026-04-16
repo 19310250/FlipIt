@@ -25,13 +25,10 @@ class Header (tk.Frame):
             self.controller.showFrame(MainPage.MainPage)
 
         def open_orders():
-            print("Orders")
+            self.controller.showFrame(FetchingOverviewInfo.FetchingOverviewInfo)
         
         def open_saved_items():
             self.controller.showFrame(SavedItems.SavedItems)
-
-        def open_returns():
-            print("Returns")
 
         def open_account():
             # MENU BUTTON
@@ -58,7 +55,6 @@ class Header (tk.Frame):
         actions = {
             "Home": open_home,
             "Orders": open_orders,
-            "Returns": open_returns,
             "Account": open_account,
             "Messages": open_messages,
             "Saved Items": open_saved_items,
