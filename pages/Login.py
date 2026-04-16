@@ -1,10 +1,13 @@
 from tkinter import ttk
 import tkinter as tk
+import json
+import os
+import hashlib
 from Colours import Colours
 from pages import MainPage
 from Header import Header
 
-# Login page: handles user login and takes them to the main page
+# login page: handles user login and takes them to the main page
 class Login(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -26,30 +29,57 @@ class Login(tk.Frame):
                                     bg=Colours.col2, fg=Colours.text, insertbackground=Colours.text)
         self.txtUsername.pack(pady=(0, 15), ipady=6)
 
-        # password field here we use show="*" to hide the password as it's typed
+        # password field - show="*" hides the password as it's typed
         tk.Label(wrapper, text="Password", font=("Arial", 12),
                  bg=Colours.bg, fg=Colours.text).pack(anchor="w")
         self.txtPassword = tk.Entry(wrapper, width=35, font=("Arial", 12),
                                      bg=Colours.col2, fg=Colours.text,
                                      insertbackground=Colours.text, show="*")
-        self.txtPassword.pack(pady=(0, 25), ipady=6)
+        self.txtPassword.pack(pady=(0, 15), ipady=6)
+
+        # error label (hidden by default, shows if login fails)
+        self.lblError = tk.Label(wrapper, text="", font=("Arial", 10),
+                                  bg=Colours.bg, fg="red")
+        self.lblError.pack(pady=(0, 5))
 
         # login button
         tk.Button(wrapper, text="Login", font=("Arial", 12, "bold"),
                   bg=Colours.col3, fg=Colours.text, width=20,
                   command=self.on_login).pack(pady=(0, 10))
 
-        # sign up link for new users (doesn't do anything functionally)
-        tk.Label(wrapper, text="Don't have an account? Sign up",
+        # sign up link - now clickable, routes to register page
+        lbl_signup = tk.Label(wrapper, text="Don't have an account? Sign up",
                  font=("Arial", 10), bg=Colours.bg, fg=Colours.col4,
-                 cursor="hand2").pack()
+                 cursor="hand2")
+        lbl_signup.pack()
+        lbl_signup.bind("<Button-1>", lambda e: self.go_to_register())
 
-    # when login is clicked, grabs the username and it then goes to main page (no actual login functionality implemented) and shows the header buttons
     def on_login(self):
-        username = self.txtUsername.get()
-        if username:
-            self.controller.username = username
+        username = self.txtUsername.get().strip()
+        password = self.txtPassword.get().strip()
+
+        # validation - don't let empty fields through
+        if not username or not password:
+            self.lblError.config(text="Please enter your username and password.")
+            return
+
+        # check credentials against users.json
+        users_file = "users.json"
+        if os.path.exists(users_file):
+            with open(users_file, "r") as f:
+                users = json.load(f)
+            if username in users and users[username] == hashlib.sha256(password.encode()).hexdigest():
+                # correct credentials - go to main page
+                self.lblError.config(text="")
+                self.controller.username = username
+                self.controller.showFrame(MainPage.MainPage)
+                Header.ShowButtons(self.controller.header)
+            else:
+                self.lblError.config(text="Incorrect username or password.")
         else:
-            self.controller.username = "User"
-        self.controller.showFrame(MainPage.MainPage)
-        Header.ShowButtons(self.controller.header)
+            # no users file yet - nudge them to register
+            self.lblError.config(text="No accounts found. Please sign up first.")
+
+    def go_to_register(self):
+        from pages import Register
+        self.controller.showFrame(Register.Register)

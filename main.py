@@ -4,7 +4,7 @@ import tkinter as tk
 
 from Colours import Colours
 from pages import (MainPage, AddListing, Login, Logout, ItemSearch, ExchangeMessage,
-Reviews, ViewListing, messages, ReturnItem, FetchingOverviewInfo, ItemsVerification, DeleteAccount, SavedItems)
+Reviews, ViewListing, messages, ReturnItem, FetchingOverviewInfo, ItemsVerification, DeleteAccount, SavedItems, Register)
 
 from Header import Header
 
@@ -69,6 +69,8 @@ class FlipITPage(tk.Tk):
         for F in (MainPage.MainPage,
                   AddListing.AddListing,
                   Login.Login,
+                  Register.Register,
+                  Logout.Logout,
                   ItemSearch.ItemSearch,
                   Reviews.Reviews,
                   ExchangeMessage.ExchangeMessage,
