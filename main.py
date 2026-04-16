@@ -22,6 +22,40 @@ class FlipITPage(tk.Tk):
 
         #Saved Items database
         self.saved_items = []
+
+        #item names
+        item_names = ["air fryer", "chromebook c434", "IKEA's HAMMARN", "iphone 17", "macbook pro", "jbl tour pro", "Monitor XDR",
+                      "ryzen pc", "HP envy 123", "Hamlet by WS", "CGP combined science", "carrera bike", "kids scince kits",
+                      "exercise book", "exam kits pack", "van rysel helmet", "reading glass", "casio calculator", "jade suitcase",
+                      "highbury backpack ", "sony WH-1000XM6", "american freezer", "cost road bed", "office cupboard",
+                      "revision desk", "Nvidia rtx 4060", "bundle jeans", "lord of the rink", "nba basketball", "anko toaster" ,
+                      ]
+
+        items_path = ["imgs/img/airfryer.gif", "imgs/img/chromebookflip.png", "imgs/img/hammarn.png",
+                      "imgs/img/iphone17.png", "imgs/img/macbookpro.png", "imgs/img/jbltourpro.png",
+                      "imgs/img/monitorxdr.png",
+                      "imgs/img/ryzenpc.png", "imgs/img/hpenvy123.png", "imgs/img/hamletws.png",
+                      "imgs/img/cgpscience.png", "imgs/img/carrerabike.png", "imgs/img/kidsscience.png",
+                      "imgs/img/exercisebook.png",
+                      "imgs/img/examkitpack.png", "imgs/img/halfordhelmet.png", "imgs/img/readingglass.png",
+                      "imgs/img/casiocalculator.png", "imgs/img/jadedesignsuitcase.png",
+                      "imgs/img/highburyback.png", "imgs/img/sonyheadphone.png", "imgs/img/americanfreezer.png",
+                      "imgs/img/costbed.png", "imgs/img/officecupboard.png", "imgs/img/revisiondesk.png",
+                      "imgs/img/nvidiartx.png", "imgs/img/bundlejeans.png", "imgs/img/booklordring.png",
+                      "imgs/img/basketballnba.png", "imgs/img/ankotoaster.png",
+
+                      ]
+
+        # SAMPLE DATA
+
+        self.items = [
+            {
+                "name": f"{item_names[i]}", 
+                "price": f"£{(i+1)*10}",
+                "image": f"{items_path[i]}"
+            }
+            for i in range(30)
+        ]
         
         mainFrame = tk.Frame(self)
         mainFrame.place(relx=0, rely=0, relwidth=1, relheight=1)
