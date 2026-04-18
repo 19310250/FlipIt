@@ -52,7 +52,8 @@ class FlipITPage(tk.Tk):
             {
                 "name": f"{item_names[i]}", 
                 "price": f"£{(i+1)*10}",
-                "image": f"{items_path[i]}"
+                "image": f"{items_path[i]}",
+                "desc": "Ut vel fugiat omnis. Dolor atque qui reprehenderit laudantium. Laborum occaecati corporis facere molestiae."
             }
             for i in range(30)
         ]
