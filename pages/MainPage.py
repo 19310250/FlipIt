@@ -1,7 +1,5 @@
 import tkinter as tk
 from PIL import Image, ImageTk
-import tkinter.messagebox as messagebox
-
 from Colours import Colours
 
 from pages import ViewListing
@@ -123,9 +121,9 @@ class MainPage(tk.Frame):
     def save_item(self, item):
         if item not in self.controller.saved_items:
             self.controller.saved_items.append(item)
-            messagebox.showinfo("Saved", f"{item['name']} added to saved items!")
+            tk.messagebox.showinfo("Saved", f"{item['name']} added to saved items!")
         else:
-            messagebox.showwarning("Not Saved", f"{item['name']} is already in saved items!")
+            tk.messagebox.showwarning("Not Saved", f"{item['name']} is already in saved items!")
             
     def viewItem(self, item):
         frame = self.controller.frames[ViewListing.ViewListing]
