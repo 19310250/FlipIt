@@ -34,9 +34,6 @@ class Header(tk.Frame):
         def open_orders():
             self.controller.showFrame(FetchingOverviewInfo.FetchingOverviewInfo)
 
-        def open_saved_items():
-            self.controller.showFrame(SavedItems.SavedItems)
-
         def open_account():
             accountMenuButton = tk.Menubutton(
                 btn_frame,
@@ -61,8 +58,7 @@ class Header(tk.Frame):
             "Home": open_home,
             "Orders": open_orders,
             "Account": open_account,
-            "Messages": open_messages,
-            "Saved Items": open_saved_items,
+            "Messages": open_messages
         }
 
         # create buttons and add command
@@ -94,7 +90,8 @@ class Header(tk.Frame):
         menu.add_command(label="Rate Sellers", command=lambda: self.controller.showFrame(Reviews.Reviews))
         menu.add_command(label="Return item", command=lambda: self.controller.showFrame(ReturnItem.ReturnItem))
         menu.add_command(label="Bought item overview", command=lambda: self.controller.showFrame(FetchingOverviewInfo.FetchingOverviewInfo))
-        menu.add_command(label="verify listed item", command=lambda: self.controller.showFrame(ItemsVerification.ItemsVerification))
+        menu.add_command(label="Verify listed item", command=lambda: self.controller.showFrame(ItemsVerification.ItemsVerification))
+        menu.add_command(label="Saved Items", command=lambda: self.controller.showFrame(SavedItems.SavedItems))
         menu.add_separator()
         menu.add_command(label="Logout", command=lambda: self.controller.showFrame(Logout.Logout))
         menubutton.config(menu=menu)

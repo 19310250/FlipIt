@@ -57,11 +57,12 @@ class Login(tk.Frame):
     def on_login(self):
         username = self.txtUsername.get().strip()
         password = self.txtPassword.get().strip()
-
+        """
         # validation - don't let empty fields through
         if not username or not password:
             self.lblError.config(text="Please enter your username and password.")
             return
+        """
 
         # check credentials against users.json
         users_file = "users.json"
