@@ -3,7 +3,7 @@ from tkinter import ttk
 import tkinter as tk
 
 from Colours import Colours
-from pages import (MainPage, AddListing, Login, Logout, ItemSearch, ExchangeMessage,
+from pages import (MainPage, AddListing, Login, Logout, AboutUs, Help, ExchangeMessage,
 Reviews, ViewListing, messages, ReturnItem, FetchingOverviewInfo, ItemsVerification, DeleteAccount, SavedItems, Register)
 
 from Header import Header
@@ -72,7 +72,8 @@ class FlipITPage(tk.Tk):
                   Login.Login,
                   Register.Register,
                   Logout.Logout,
-                  ItemSearch.ItemSearch,
+                  AboutUs.AboutUs,
+                  Help.Help,
                   Reviews.Reviews,
                   ExchangeMessage.ExchangeMessage,
                   messages.MessagesPage,
