@@ -62,7 +62,7 @@ class SavedItems(tk.Frame):
                 bg=Colours.col3
             )
             img.pack(side="left", padx=10, pady=10)
-            # Name and price
+            # Show name, seller and price
             info_frame = tk.Frame(inner, bg=Colours.col2)
             info_frame.pack(side="left", fill="both", expand=True, padx=10, pady=10)
             tk.Label(
@@ -72,6 +72,13 @@ class SavedItems(tk.Frame):
                 fg=Colours.text,
                 font=("Arial", 12, "bold")
             ).pack(anchor="w")
+            tk.Label(
+                info_frame,
+                text=item["seller"],
+                bg=Colours.col2,
+                fg=Colours.text,
+                font=("Arial", 12)
+            ).pack(anchor="w", pady=5)
             tk.Label(
                 info_frame,
                 text=item["price"],

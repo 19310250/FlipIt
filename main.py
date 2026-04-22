@@ -46,6 +46,12 @@ class FlipITPage(tk.Tk):
 
                       ]
 
+        seller_names = ["Seller 1", "Seller 2", "Seller 3", "Seller 4", "Seller 5", "Seller 6", "Seller 7", "Seller 8", "Seller 9",
+                        "Seller 10", "Seller 11", "Seller 12", "Seller 13", "Seller 14", "Seller 15", "Seller 16", "Seller 17",
+                        "Seller 18", "Seller 19", "Seller 20", "Seller 21", "Seller 22", "Seller 23", "Seller 24", "Seller 25",
+                        "Seller 26", "Seller 27", "Seller 28", "Seller 29", "Seller 30", "serler 31", "Seller 32",
+                        ]
+
         # SAMPLE DATA
 
         self.items = [
@@ -53,6 +59,7 @@ class FlipITPage(tk.Tk):
                 "name": f"{item_names[i]}", 
                 "price": f"£{(i+1)*10}",
                 "image": f"{items_path[i]}",
+                "seller": f"{seller_names[i]}",
                 "desc": "Ut vel fugiat omnis. Dolor atque qui reprehenderit laudantium. Laborum occaecati corporis facere molestiae."
             }
             for i in range(30)
