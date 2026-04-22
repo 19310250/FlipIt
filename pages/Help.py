@@ -14,7 +14,24 @@ class Help(tk.Frame):
         lblTitle.pack(pady=20)
 
         # Help content
-        help_text = ("dsadas"
+        help_text = ("""
+        Welcome to the FlipIt Help Page!
+
+        If you have any questions or need assistance, please feel free to contact us at:
+
+        Phone number: +0123456789
+
+        Email: TestEmail@flipit.com
+        """
         )
-        lblAbout = ttk.Label(self, text=help_text, wraplength=600, background=Colours.bg, foreground=Colours.text, font=("Arial", 12))
-        lblAbout.pack(pady=10)
+        verstion_text = ("""
+        Version 1.0.0
+        
+        For updates and more information contact us directly
+        """)
+        lblHelp = ttk.Label(self, text=help_text, wraplength=1400, background=Colours.bg, foreground=Colours.text, font=("Arial", 16))
+        lblHelp.pack(pady=10)
+        lblVersion = ttk.Label(self, text="Version", wraplength=1400, background=Colours.bg, foreground=Colours.text, font=("Arial", 20))
+        lblVersion.pack(pady=10)
+        lblDevelopers = ttk.Label(self, text=verstion_text, wraplength=1400, background=Colours.bg, foreground=Colours.text, font=("Arial", 16))
+        lblDevelopers.pack(pady=10)
