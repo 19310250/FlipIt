@@ -119,7 +119,6 @@ class Header(tk.Frame):
         menu = tk.Menu(menubutton, tearoff=0)
         menu.add_command(label="Add Listing", command=lambda: self.controller.showFrame(AddListing.AddListing))
         menu.add_command(label="Message User", command=lambda: self.controller.showFrame(messages.MessagesPage))
-        menu.add_command(label="Rate Sellers", command=lambda: self.controller.showFrame(Reviews.Reviews))
         menu.add_command(label="Return item", command=lambda: self.controller.showFrame(ReturnItem.ReturnItem))
         menu.add_command(label="Bought item overview", command=lambda: self.controller.showFrame(FetchingOverviewInfo.FetchingOverviewInfo))
         menu.add_command(label="Verify listed item", command=lambda: self.controller.showFrame(ItemsVerification.ItemsVerification))
