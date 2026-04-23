@@ -50,6 +50,7 @@ class Header(tk.Frame):
         )
         self.suggestions.lift()
 
+
     def ShowButtons(self):
         btn_frame = tk.Frame(self, bg=Colours.col2)
         btn_frame.pack(side="right", padx=10)
@@ -59,7 +60,7 @@ class Header(tk.Frame):
         search_frame.pack(side="left", fill="x", expand=True, padx=20)
         self.search = tk.Entry(search_frame, font=("Arial", 12), width=30)
         self.search.pack(fill="x", expand=True)
-        self.suggestions=tk.Listbox(self, font=("Arial", 12), height=6)
+        self.suggestions=tk.Listbox(self.controller, font=("Arial", 12), height=6)
         self.suggestions.place_forget()
         self.search.bind("<KeyRelease>", self.update_suggestions)
 
